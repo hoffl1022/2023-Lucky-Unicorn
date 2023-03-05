@@ -16,6 +16,8 @@ def yes_no(question):
         else:
             print("please answer yes / no")
 
+
+# asks the user for a number
 def num_check(question, low, high):
     error = "please enter a whole number between 1 and 10\n"
 
@@ -44,11 +46,14 @@ def instructions():
     print()
     return ""
 
+
 # Main routine goes here
 played_before = yes_no("have you played this game before? ")
 
 if played_before == "no":
     instructions()
+
+print()
 
 # ask user how much they want to play with
 how_much = num_check("How much would you like to play with? ", 0, 10)
