@@ -15,7 +15,6 @@ while play_again == "":
     print("balance: ", balance)
     print()
 
-
     if balance < 1:
         play_again = "xxx"
         print("you broke")
