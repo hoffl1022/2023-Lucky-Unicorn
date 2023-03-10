@@ -2,6 +2,7 @@ import random
 
 # Functions go here
 
+
 # checks whether the user answers yes or no to a question
 def yes_no(question):
     while True:
@@ -17,6 +18,7 @@ def yes_no(question):
 
         else:
             print("please answer yes / no")
+
 
 # asks the user for a number
 def num_check(question, low, high):
@@ -47,6 +49,22 @@ def instructions():
     print()
     return ""
 
+
+# generate a decorated statement
+def statement_generator(statement, decoration):
+
+    sides = decoration * 3
+
+    statement = "{} {} {}".format(sides, statement, sides)
+    top_bottom = decoration * len(statement)
+
+    print(top_bottom)
+    print(statement)
+    print(top_bottom)
+
+    return ""
+
+
 # Main routine goes here
 played_before = yes_no("have you played this game before? ")
 
@@ -71,6 +89,7 @@ while play_again == "":
     # print round number
     print()
     print("*** Round #{} ***".format(rounds_played))
+    print()
 
     chosen_num = random.randint(1, 100)
 
@@ -80,31 +99,37 @@ while play_again == "":
     if 1 <= chosen_num <= 5:
         chosen = "Unicorn"
         balance += 4
+        prize_decoration = "!"
 
     # if random # is between 6 and 36
     # user gets a donkey, subtract $1 from balance
     elif 6 <= chosen_num <= 36:
         chosen = "Donkey"
         balance -= 1
+        prize_decoration = "D"
 
     # the token is either a horse or zebra
     # in either case subtract $0.50 from balance
     else:
-        chosen = ("Zebra", "Horse")
+        # if the number is even set chosen to horse
+        if chosen_num % 2 == 0:
+            chosen = "Horse"
+            prize_decoration = "H"
+
+        else:
+            chosen = "Zebra"
+            prize_decoration = "Z"
         balance -= 0.5
-        # randomly choose horse or zebra
-        chosen = random.choice(chosen)
 
     # print what token the user received and their balance after they received that token
-    print()
-    print("---------------------------------------------------------------")
-    print("You got a ={}=. Your balance is ${:.2f}".format(chosen, balance))
-    print("---------------------------------------------------------------")
-    print()
+
+    outcome = "You got a {}. Your balance is ${:.2f}".format(chosen, balance)
+
+    statement_generator(outcome, prize_decoration)
 
     if balance < 1:
         play_again = "xxx"
-        print("Damn, you broke")
+        print("Thank you for playing!")
 
     else:
         play_again = input("press Enter to play again or type 'xxx' to quit")
