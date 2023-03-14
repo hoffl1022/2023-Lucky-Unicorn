@@ -45,12 +45,12 @@ def num_check(question, low, high):
 def instructions():
     print("**** How to Play****")
     print()
-    print("The rules of the game go here")
+    print("-")
     print()
     return ""
 
 
-# generate a decorated statement
+# generate a decorated statement, returns ""
 def statement_generator(statement, decoration):
 
     sides = decoration * 3
@@ -87,8 +87,10 @@ while play_again == "":
     rounds_played += 1
 
     # print round number
-    print()
-    print("*** Round #{} ***".format(rounds_played))
+
+    round_num = ("Round #{}".format(rounds_played))
+
+    statement_generator(round_num, "*")
     print()
 
     chosen_num = random.randint(1, 100)
@@ -129,11 +131,14 @@ while play_again == "":
 
     if balance < 1:
         play_again = "xxx"
-        print("Thank you for playing!")
 
     else:
-        play_again = input("press Enter to play again or type 'xxx' to quit")
+        play_again = input("Press Enter to play again or type 'xxx' to quit")
         print()
 
 print()
+statement_generator("Results", "=")
+
+print()
 print("Final balance: $", balance)
+print("Thank you for playing")

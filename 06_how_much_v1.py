@@ -7,7 +7,7 @@ def num_check(question, low, high):
             # ask the response
             response = int(input(question))
 
-            # if the the response is too low / too high give
+            # if the response is too low / too high give
             if low < response <= high:
                 return response
 
@@ -19,6 +19,8 @@ def num_check(question, low, high):
             print(error)
 
 # main routine goes here
+
+
 how_much = num_check("how much would you like to play with? ", 0, 10)
 
 print("you will be playing with ${}".format(how_much))
