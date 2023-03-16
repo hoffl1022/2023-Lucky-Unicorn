@@ -45,7 +45,19 @@ def num_check(question, low, high):
 def instructions():
     print("**** How to Play****")
     print()
-    print("-")
+    print("First you need to enter how much money")
+    print("you would like to play with ($1 - $10 in full dollars)")
+    print("Then you can press enter to play")
+    print()
+    print("A random animal will be generated, depending on which animal you get")
+    print("you can either gain or lose money")
+    print()
+    print("if you get a Unicorn you will win $4")
+    print("if you get a horse / zebra you will lose $0.50")
+    print("if you get a donkey you will lose $1")
+    print()
+    print("if you end up with less that $1 the game will automatically end")
+    print("or you can type 'xxx' at any time to manually end the game")
     print()
     return ""
 
@@ -66,22 +78,27 @@ def statement_generator(statement, decoration):
 
 
 # Main routine goes here
-played_before = yes_no("have you played this game before? ")
+
+welcome = "Welcome to lucky unicorn!"
+statement_generator(welcome, "#")
+print()
+
+played_before = yes_no("===have you played this game before?=== ")
+print()
 
 if played_before == "no":
     instructions()
 
-print()
-
 # ask user how much they want to play with
-how_much = num_check("How much would you like to play with? ", 0, 10)
+how_much = num_check("===How much would you like to play with?=== ", 0, 10)
+print()
 
 balance = how_much
 
 rounds_played = 0
 
 play_again = input("Press <Enter> to play...").lower()
-while play_again == "":
+while play_again != "xxx":
 
     # increase # of rounds played
     rounds_played += 1
@@ -140,5 +157,5 @@ print()
 statement_generator("Results", "=")
 
 print()
-print("Final balance: $", balance)
+print(f"Final balance: ${balance:.2f}")
 print("Thank you for playing")
