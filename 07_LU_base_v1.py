@@ -142,7 +142,7 @@ while play_again != "xxx":
 
     # print what token the user received and their balance after they received that token
 
-    outcome = "You got a {}. Your balance is ${:.2f}".format(chosen, balance)
+    outcome = f"You got a {chosen}. Your balance is ${balance:.2f}"
 
     statement_generator(outcome, prize_decoration)
 
